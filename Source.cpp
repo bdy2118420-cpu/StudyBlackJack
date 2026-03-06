@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-	cout << "카드 모양과 중복은 고려하지않음" << endl;
+	cout << "카드 모양은 고려하지않으나 중복카드는 4장까지 존재" << endl;
 
 
 	int Card[13] = {1,2,3,4,5,6,7,8,9,10,10,10,10};
@@ -16,26 +16,37 @@ int main()
 	int TotalPlayer = 0;
 	int TotalComputer = 0;
 	int Result = 0;
+	int CardIndex = 0;
+	int Deck[52];
 
+	for (int i = 0; i < 52; i++) 
+	{
+		Deck[i] = i % 13; 
+	}
 
+	srand(time(0));
 
-	srand(time(0)); 
-	int CardNum=rand()%13; //부터 13까지의 랜덤 카드번호 생성
+	for (int i = 0; i < 52; i++) 
+	{
+		int dest = rand() % 52;
+		swap(Deck[i], Deck[dest]); 
+	}
+
 
 
 	cout << "플레이어 카드" << endl;
 	for (int i = 0; i < 3; i++)
 	{
-		cout << CardShape[CardNum] << endl;
-		Player[i] = Card[CardNum];
-		CardNum = rand()%13;
+		int cardIdx = Deck[CardIndex++];
+		cout << CardShape[cardIdx] << endl;
+		Player[i] = Card[cardIdx];
 	}
 	cout << "상대 카드" << endl;
 	for (int i = 0; i < 3; i++)
 	{
-		cout << CardShape[CardNum] << endl;
-		Computer[i] = Card[CardNum];
-		CardNum = rand()%13;
+		int cardIdx = Deck[CardIndex++]; 
+		cout << CardShape[cardIdx] << endl;
+		Computer[i] = Card[cardIdx];
 	}
 
 	cout << "플레이어 카드합" << endl;
@@ -106,7 +117,5 @@ int main()
 	{
 		cout << "무승부입니다." << endl;
 	}
-
-
 
 }
