@@ -9,8 +9,8 @@ int main()
 	cout << "카드 모양과 중복은 고려하지않음" << endl;
 
 
-	int Card[13] = { 1,2,3,4,5,6,7,8,9,10,10,10,10 };
-	string CardShape[13] = { "1","2","3","4","5","6","7","8","9","10","j","Q","K" };
+	int Card[13] = {1,2,3,4,5,6,7,8,9,10,10,10,10};
+	string CardShape[13] = {"1","2","3","4","5","6","7","8","9","10","j","Q","K"};
 	int Player[3] = { 0, };
 	int Computer[3] = { 0, };
 	int TotalPlayer = 0;
@@ -19,8 +19,8 @@ int main()
 
 
 
-	srand(time(0));
-	int CardNum = rand() % 13; //부터 13까지의 랜덤 카드번호 생성
+	srand(time(0)); 
+	int CardNum=rand()%13; //부터 13까지의 랜덤 카드번호 생성
 
 
 	cout << "플레이어 카드" << endl;
@@ -28,14 +28,14 @@ int main()
 	{
 		cout << CardShape[CardNum] << endl;
 		Player[i] = Card[CardNum];
-		CardNum = rand() % 13;
+		CardNum = rand()%13;
 	}
 	cout << "상대 카드" << endl;
 	for (int i = 0; i < 3; i++)
 	{
 		cout << CardShape[CardNum] << endl;
 		Computer[i] = Card[CardNum];
-		CardNum = rand() % 13;
+		CardNum = rand()%13;
 	}
 
 	cout << "플레이어 카드합" << endl;
@@ -57,8 +57,8 @@ int main()
 	cout << TotalComputer << endl;
 
 
-
-	if (TotalComputer == TotalPlayer)//일반적인 결과값
+	
+	if (TotalComputer==TotalPlayer)//일반적인 결과값
 	{
 		cout << "두 플레이어의 카드합이 같습니다." << endl;
 		Result = 2;
@@ -68,7 +68,7 @@ int main()
 		cout << "플레이어의 카드합이 더 큽니다." << endl;
 		Result = 0;
 	}
-	else
+	else 
 	{
 		cout << "상대의 카드합이 더 큽니다." << endl;
 		Result = 1;
@@ -94,7 +94,7 @@ int main()
 
 	//결과 출력
 
-	if (Result == 0)
+	if (Result==0)
 	{
 		cout << "플레이어가 이겼습니다." << endl;
 	}
